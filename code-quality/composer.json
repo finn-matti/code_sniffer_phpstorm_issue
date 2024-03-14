@@ -1,0 +1,21 @@
+{
+    "name": "mhaehnel/code-quality",
+    "description": "global code quality tools",
+    "authors": [
+        {
+            "name": "Martin Hähnel",
+            "email": "martin.haehnel@esono.de"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*",
+        "slevomat/coding-standard": "8.13.*",
+        "phpcsstandards/phpcsextra": "^1.2.0",
+        "phpcsstandards/phpcsutils": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

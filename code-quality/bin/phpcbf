@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+/Users/mhaehnel/Local/code/code_sniffer_phpstorm_issue/code-quality/vendor/bin/phpcbf "$@"

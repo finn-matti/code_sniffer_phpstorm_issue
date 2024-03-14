@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<ruleset name="Matti's Formatting Rules">
+
+   <!--
+    The content of the description tag is not displayed anywhere
+    except in this file, so it can contain information for
+    developers who may change this file in the future.
+ -->
+   <description>We use php-cs-fixer first and foremost. But this helps to stay sane. (Borrows
+      heavily from PSR12 ruleset, but tries to stay out of Symfony's way.)</description>
+
+   <!-- Vendor-Folder kann ignoriert werden -->
+   <exclude-pattern>*/vendor/*</exclude-pattern>
+
+   <!-- Extra Rules: Needs to have relative path from PHPCS source location-->
+   <config name="installed_paths" value="../../slevomat/coding-standard,../../phpcsstandards/phpcsextra" />
+
+   <!-- Arrays -->
+   <rule ref="Generic.Arrays.ArrayIndent">
+      <properties>
+         <property name="indent" value="4" />
+      </properties>
+   </rule>
+
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/arrays.md#slevomatcodingstandardarrayssinglelinearraywhitespace- -->
+   <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace">
+   </rule>
+
+   <!-- https://github.com/phpcsstandards/phpcsextra#universalarraysduplicatearraykey-books  -->
+   <rule ref="Universal.Arrays.DuplicateArrayKey">
+   </rule>
+
+   <!-- Comments -->
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/commenting.md#slevomatcodingstandardcommentinguselessinheritdoccomment- -->
+   <rule ref="SlevomatCodingStandard.Commenting.UselessInheritDocComment" />
+
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/commenting.md#slevomatcodingstandardcommentingemptycomment- -->
+   <rule ref="SlevomatCodingStandard.Commenting.EmptyComment" />
+
+
+   <!-- Control Structures -->
+   <rule ref="Squiz.ControlStructures.ControlSignature" />
+
+   <!-- if statements -->
+   <rule ref="PSR12.ControlStructures.ControlStructureSpacing" />
+   <rule ref="PSR12.ControlStructures.BooleanOperatorPlacement">
+      <properties>
+         <property name="allowOnly" value="first" />
+      </properties>
+   </rule>
+   <rule ref="Squiz.ControlStructures.ControlSignature" />
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/control-structures.md#slevomatcodingstandardcontrolstructuresrequireyodacomparison- -->
+   <rule ref="SlevomatCodingStandard.ControlStructures.RequireYodaComparison" />
+
+   <!-- Classes -->
+
+   <!-- general -->
+
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/classes.md#slevomatcodingstandardclassesclassmemberspacing- -->
+   <rule ref="SlevomatCodingStandard.Classes.ClassMemberSpacing" />
+
+   <!-- constructor -->
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/classes.md#slevomatcodingstandardclassesrequireconstructorpropertypromotion- -->
+   <rule ref="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion" />
+
+
+   <!-- Properties -->
+   <rule ref="PSR2.Classes.PropertyDeclaration" />
+   <rule ref="Squiz.WhiteSpace.MemberVarSpacing">
+      <properties>
+         <property name="spacing" value="1" />
+         <property name="spacingBeforeFirst" value="0" />
+      </properties>
+   </rule>
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/type-hints.md#slevomatcodingstandardtypehintspropertytypehint- -->
+   <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint"><!-- we do not have the power to
+      change this in chameleon for every occurence -->
+      <exclude
+         name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification" />
+   </rule>
+
+   <!-- Functions and Methods -->
+   <rule ref="Squiz.Scope.MethodScope" />
+   <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing" />
+   <rule ref="Squiz.Functions.MultiLineFunctionDeclaration" />
+   <rule ref="PSR2.Methods.FunctionClosingBrace" />
+   <rule ref="Squiz.Functions.FunctionDeclaration" />
+   <rule ref="Squiz.Functions.LowercaseFunctionKeywords" />
+   <rule ref="PSR12.Functions.ReturnTypeDeclaration" />
+   <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+      <properties>
+         <property name="equalsSpacing" value="1" />
+      </properties>
+   </rule>
+
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/type-hints.md#slevomatcodingstandardtypehintsparametertypehint- -->
+   <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
+      <!-- we do not have the power to change this in chameleon for every occurence -->
+      <exclude
+         name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification" />
+   </rule>
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/type-hints.md#slevomatcodingstandardtypehintsparametertypehintspacing-
+    -->
+   <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing" />
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/type-hints.md#slevomatcodingstandardtypehintsreturntypehint- -->
+   <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
+      <!-- we do not have the power to change this in chameleon for every occurence -->
+      <exclude
+         name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification" />
+   </rule>
+   <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/complexity.md#slevomatcodingstandardcomplexitycognitive -->
+   <rule ref="SlevomatCodingStandard.Complexity.Cognitive" />
+
+
+   <!-- Functions and Method CALLS -->
+   <rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
+   <rule ref="PSR2.Methods.FunctionCallSignature" />
+   <rule ref="PSR2.Methods.FunctionCallSignature.SpaceAfterCloseBracket">
+      <severity>0</severity>
+   </rule>
+   <rule ref="PSR2.Methods.FunctionCallSignature.OpeningIndent">
+      <severity>0</severity>
+   </rule>
+
+   <!-- Scope -->
+   <rule ref="Generic.WhiteSpace.ScopeIndent">
+      <properties>
+         <property name="ignoreIndentationTokens" type="array">
+            <element value="T_COMMENT" />
+            <element value="T_DOC_COMMENT_OPEN_TAG" />
+         </property>
+      </properties>
+   </rule>
+
+   <!-- Uses, Namespaces, etc. -->
+
+   <!--
+   https://github.com/slevomat/coding-standard/blob/master/doc/namespaces.md#slevomatcodingstandardnamespacesunuseduses-
+    -->
+   <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+      <properties>
+         <property name="searchAnnotations" value="true" />
+      </properties>
+   </rule>
+
+   <!-- zzz Generic Stuff -->
+
+   <rule ref="Generic.Files.LineLength">
+      <properties>
+         <property name="lineLimit" value="80" />
+         <property name="absoluteLineLimit" value="120" />
+      </properties>
+      <severity>1</severity>
+   </rule>
+
+</ruleset>
